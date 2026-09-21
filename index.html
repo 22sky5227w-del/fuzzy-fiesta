@@ -2,1769 +2,884 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>许佳丽 · AI驱动内容增长运营</title>
-  <meta name="description" content="AI内容增长运营求职作品集：内容策划 × AI工作流设计 × AIGC内容生产 × 用户增长">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
-  <style>
-    /* ========== Variables ========== */
-    :root {
-      --bg: #FAF8F5;
-      --text: #2D3E3A;
-      --text-light: #5A6B66;
-      --text-mute: #8A9994;
-      --accent: #C9A96E;
-      --accent-deep: #B8935A;
-      --accent-light: rgba(201, 169, 110, 0.1);
-      --accent-border: rgba(201, 169, 110, 0.32);
-      --line: rgba(45, 62, 58, 0.12);
-      --card: #FFFFFF;
-      --nav-h: 62px;
-      --serif: 'Noto Serif SC', Georgia, 'Times New Roman', serif;
-      --sans: 'Inter', -apple-system, 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    }
-
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
-
-    body {
-      font-family: var(--sans);
-      background: var(--bg);
-      background-image:
-        radial-gradient(circle at 12% 22%, rgba(201, 169, 110, 0.05) 0%, transparent 42%),
-        radial-gradient(circle at 88% 78%, rgba(45, 62, 58, 0.025) 0%, transparent 42%);
-      color: var(--text);
-      line-height: 1.75;
-      font-size: 15px;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
-    ul { list-style: none; }
-
-    /* ========== Nav ========== */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: var(--nav-h);
-      background: rgba(250, 248, 245, 0.88);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--line);
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    nav.scrolled { box-shadow: 0 2px 18px rgba(45, 62, 58, 0.05); }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      gap: 2px;
-      padding: 0 20px;
-      width: 100%;
-      max-width: 940px;
-      justify-content: center;
-    }
-
-    .nav-link {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text);
-      padding: 6px 13px;
-      position: relative;
-      white-space: nowrap;
-      transition: color 0.3s ease;
-    }
-
-    .nav-link i {
-      font-style: normal;
-      font-size: 11px;
-      color: var(--accent);
-      margin-right: 5px;
-      font-weight: 600;
-    }
-
-    .nav-link:hover, .nav-link.active { color: var(--accent); }
-
-    .nav-link.active::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 50%;
-      transform: translateX(-50%);
-      width: 16px; height: 1.5px;
-      background: var(--accent);
-    }
-
-    /* ========== Layout ========== */
-    section {
-      padding: 86px 6vw;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    #home { min-height: 100vh; padding-top: calc(var(--nav-h) + 40px); }
-
-    .inner { max-width: 960px; width: 100%; margin: 0 auto; }
-
-    /* ========== Home ========== */
-    #home { text-align: center; align-items: center; }
-
-    .hero { max-width: 920px; }
-
-    .hero-title {
-      font-family: var(--serif);
-      font-size: clamp(38px, 5vw, 54px);
-      font-weight: 900;
-      letter-spacing: 2px;
-      line-height: 1.3;
-      margin-bottom: 20px;
-    }
-
-    .hero-sub {
-      font-size: 15.5px;
-      color: var(--text-light);
-      letter-spacing: 1px;
-      line-height: 1.8;
-      white-space: nowrap;
-      margin-bottom: 30px;
-    }
-
-    .hero-aims {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 58px;
-    }
-
-    .aim {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      padding: 6px 20px;
-      border: 1px solid var(--accent-border);
-      border-radius: 18px;
-      background: var(--accent-light);
-      color: var(--text);
-    }
-
-    /* 核心数据 + 可视化 */
-    .metric-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      margin-bottom: 46px;
-    }
-
-    .metric {
-      padding: 26px 22px;
-      border-left: 1px solid var(--line);
-      text-align: left;
-    }
-
-    .metric:first-child { border-left: none; }
-
-    .metric-viz { height: 62px; margin-bottom: 18px; display: flex; align-items: flex-end; }
-
-    /* 迷你横向堆叠条 */
-    .mv-bars { width: 100%; display: flex; flex-direction: column; justify-content: center; gap: 10px; }
-
-    .mv-row { display: flex; align-items: center; gap: 8px; }
-
-    .mv-row em {
-      font-style: normal;
-      font-size: 10.5px;
-      font-weight: 700;
-      color: var(--text-mute);
-      width: 12px;
-    }
-
-    .mv-track {
-      flex: 1;
-      height: 7px;
-      background: rgba(45, 62, 58, 0.07);
-      border-radius: 4px;
-      display: flex;
-      overflow: hidden;
-      gap: 2px;
-    }
-
-    .mv-track i { display: block; height: 100%; border-radius: 4px; }
-    .mv-track i.b { background: rgba(45, 62, 58, 0.3); }
-    .mv-track i.a { background: linear-gradient(90deg, #D9BE8C, var(--accent)); }
-
-    /* 迷你纵向柱 */
-    .mv-cols { width: 100%; display: flex; align-items: flex-end; justify-content: space-around; gap: 10px; }
-
-    .vb {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
-      height: 100%;
-      gap: 4px;
-    }
-
-    .vb i {
-      width: 100%;
-      max-width: 26px;
-      border-radius: 3px 3px 0 0;
-      background: rgba(45, 62, 58, 0.22);
-      transition: height 1s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .vb i.hi { background: linear-gradient(180deg, #D9BE8C, var(--accent)); }
-
-    .vb span {
-      font-size: 10px;
-      color: var(--text-mute);
-      letter-spacing: 0.5px;
-    }
-
-    .metric-num {
-      font-family: var(--serif);
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--accent);
-      line-height: 1.1;
-    }
-
-    .metric-num small { font-size: 18px; }
-
-    .metric-label {
-      font-size: 13px;
-      color: var(--text-light);
-      margin-top: 4px;
-      letter-spacing: 0.5px;
-    }
-
-    .metric-viz.mv-i { height: 50px; align-items: center; justify-content: flex-start; }
-    .metric-viz.mv-i svg { width: auto; height: 100%; }
-
-    .metric.hl .metric-num { font-size: 44px; color: var(--accent-deep); }
-
-    .hero-en {
-      font-size: 12px;
-      letter-spacing: 3px;
-      color: var(--text-mute);
-      text-transform: uppercase;
-      margin-bottom: 40px;
-    }
-
-    .scroll-hint {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      font-size: 13px;
-      letter-spacing: 2px;
-      color: var(--text-light);
-    }
-
-    .scroll-arrow {
-      color: var(--accent);
-      font-size: 17px;
-      animation: bounce 2s ease-in-out infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(7px); }
-    }
-
-    /* ========== 模块头（编号系统） ========== */
-    .module-head {
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
-      padding-bottom: 18px;
-      border-bottom: 1px solid var(--line);
-      margin-bottom: 44px;
-    }
-
-    .module-num {
-      font-family: var(--serif);
-      font-size: 32px;
-      font-weight: 700;
-      color: var(--accent);
-      opacity: 0.55;
-      line-height: 1;
-      padding-top: 2px;
-    }
-
-    .eyebrow {
-      font-size: 11.5px;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 4px;
-    }
-
-    .module-title {
-      font-family: var(--serif);
-      font-size: 32px;
-      font-weight: 700;
-      line-height: 1.35;
-    }
-
-    /* ========== 通用 60 / 40 ========== */
-    .split {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-      gap: 48px;
-      align-items: start;
-    }
-
-    /* 校园区旧版 col-right/col3 布局已弃用；.split.stretch 现仅用于左右等高的分栏（如 03 AI项目） */
-    .split.stretch { align-items: stretch; }
-
-    .p-title {
-      font-family: var(--serif);
-      font-size: 25px;
-      font-weight: 700;
-      line-height: 1.45;
-      margin-bottom: 8px;
-    }
-
-    .p-oneline {
-      font-size: 15px;
-      color: var(--text-light);
-      line-height: 1.85;
-      margin-bottom: 22px;
-      max-width: 620px;
-    }
-
-    .p-meta {
-      font-size: 13px;
-      color: var(--text-mute);
-      letter-spacing: 0.5px;
-      margin-bottom: 26px;
-    }
-
-    .sub {
-      font-size: 19px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .sub::before {
-      content: '';
-      width: 3px;
-      height: 16px;
-      background: var(--accent);
-      border-radius: 2px;
-    }
-
-    .sub-en {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      color: var(--accent);
-      text-transform: uppercase;
-      margin-left: 2px;
-      padding-top: 3px;
-    }
-
-    .block { padding: 34px 0; border-top: 1px solid var(--line); }
-    .block:first-child { border-top: none; padding-top: 0; }
-
-    .body-text {
-      font-size: 15px;
-      color: var(--text);
-      line-height: 1.95;
-    }
-
-    .body-text + .body-text { margin-top: 12px; }
-
-    /* 清单 */
-    .duty-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px 32px;
-    }
-
-    .duty-list li {
-      font-size: 14.5px;
-      line-height: 1.7;
-      padding-left: 16px;
-      position: relative;
-    }
-
-    .duty-list li::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 10px;
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      background: var(--accent);
-    }
-
-    .duty-list li span {
-      display: block;
-      font-size: 13px;
-      color: var(--text-light);
-    }
-
-    /* 数字行（扁平） */
-    .stat-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 36px;
-    }
-
-    .stat .n {
-      font-family: var(--serif);
-      font-size: 30px;
-      font-weight: 700;
-      color: var(--accent);
-      line-height: 1.2;
-    }
-
-    .stat .n small { font-size: 15px; }
-
-    .stat .l {
-      font-size: 13px;
-      color: var(--text-light);
-    }
-
-    /* ========== 增长柱状图 ========== */
-    .chart {
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 26px 22px 20px;
-      background: var(--card);
-    }
-
-    .chart-title {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      color: var(--text-mute);
-      text-transform: uppercase;
-      margin-bottom: 22px;
-    }
-
-    .chart-area {
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      gap: 44px;
-      height: 170px;
-    }
-
-    .cg { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-
-    .cg-bars { display: flex; align-items: flex-end; gap: 12px; height: 150px; }
-
-    .bar-item {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: center;
-      height: 100%;
-      gap: 6px;
-    }
-
-    .bar {
-      width: 40px;
-      border-radius: 5px 5px 0 0;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      padding-top: 7px;
-      transition: height 1s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .bar span { font-size: 11px; font-weight: 600; }
-
-    .bar.b { background: rgba(45, 62, 58, 0.2); }
-    .bar.b span { color: var(--text-light); }
-
-    .bar.a {
-      background: linear-gradient(180deg, #D9BE8C, var(--accent));
-    }
-
-    .bar.a span { color: #fff; }
-
-    .cg-label { font-size: 13.5px; font-weight: 600; }
-    .cg-up { font-size: 12.5px; font-weight: 700; color: var(--accent-deep); }
-
-    .chart-legend {
-      display: flex;
-      justify-content: center;
-      gap: 22px;
-      margin-top: 18px;
-      padding-top: 14px;
-      border-top: 1px solid var(--line);
-      font-size: 12px;
-      color: var(--text-mute);
-    }
-
-    .dot { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 6px; vertical-align: middle; }
-    .dot.b { background: rgba(45, 62, 58, 0.2); }
-    .dot.a { background: var(--accent); }
-
-    /* 成果条 */
-    .result-list { display: flex; flex-direction: column; gap: 22px; }
-
-    .r-row { display: grid; grid-template-columns: 48px 1fr; gap: 8px 14px; align-items: center; }
-
-    .r-k {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-light);
-    }
-
-    .r-bar {
-      grid-column: 2;
-      height: 10px;
-      background: rgba(45, 62, 58, 0.07);
-      border-radius: 5px;
-      display: flex;
-      overflow: hidden;
-      gap: 2px;
-    }
-
-    .r-bar i { display: block; height: 100%; }
-    .r-bar i.b { background: rgba(45, 62, 58, 0.28); border-radius: 5px 0 0 5px; }
-    .r-bar i.a { background: linear-gradient(90deg, #D9BE8C, var(--accent)); border-radius: 0 5px 5px 0; }
-
-    .r-v {
-      grid-column: 2;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
-      letter-spacing: 0.5px;
-    }
-
-    .r-total {
-      padding-top: 16px;
-      border-top: 1px solid var(--line);
-      font-size: 14.5px;
-      color: var(--text-light);
-      letter-spacing: 0.5px;
-    }
-
-    .r-total b {
-      font-family: var(--serif);
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--accent);
-      margin: 0 4px;
-    }
-
-    /* ========== 流程对比（垂直步骤） ========== */
-    .flow-wrap {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-
-    .flow-col {
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 24px 22px;
-      background: #F4F1EC;
-    }
-
-    .flow-col.is-ai {
-      background: var(--card);
-      border-color: var(--accent-border);
-    }
-
-    .flow-col h4 {
-      font-size: 19px;
-      font-weight: 600;
-      font-family: var(--serif);
-      margin-bottom: 18px;
-    }
-
-    .v-step {
-      font-size: 14px;
-      text-align: center;
-      padding: 9px 10px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.7);
-      color: var(--text);
-    }
-
-    .flow-col.is-ai .v-step {
-      border-color: var(--accent-border);
-      border-radius: 8px;
-      background: var(--accent-light);
-    }
-
-    .v-arrow {
-      text-align: center;
-      color: var(--accent);
-      font-size: 13px;
-      line-height: 1;
-      padding: 7px 0;
-    }
-
-    .flow-time {
-      margin-top: 18px;
-      padding-top: 14px;
-      border-top: 1px dashed var(--accent-border);
-      font-size: 15px;
-      color: var(--text-light);
-      display: flex;
-      align-items: baseline;
-      gap: 6px;
-    }
-
-    .flow-time b {
-      font-family: var(--serif);
-      font-size: 26px;
-      font-weight: 700;
-      color: var(--text-mute);
-      line-height: 1;
-    }
-
-    .flow-col.is-ai .flow-time b { color: var(--accent); }
-
-    .value-line {
-      margin-top: 22px;
-      font-size: 14.5px;
-      line-height: 1.9;
-      color: var(--text);
-      padding: 14px 20px;
-      background: var(--accent-light);
-      border-left: 2px solid var(--accent);
-      border-radius: 0 8px 8px 0;
-    }
-
-    .value-line b { color: var(--accent-deep); }
-
-    /* 效率对比卡 */
-    .eff-box {
-      border: 1px solid var(--accent-border);
-      border-radius: 12px;
-      padding: 26px 24px;
-      background: var(--card);
-      text-align: center;
-    }
-
-    .eff-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 18px;
-      padding: 14px 0;
-    }
-
-    .eff-item .k {
-      font-size: 11.5px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      color: var(--text-mute);
-      text-transform: uppercase;
-    }
-
-    .eff-item .v {
-      font-family: var(--serif);
-      font-size: 30px;
-      font-weight: 700;
-      color: var(--text-mute);
-      line-height: 1.2;
-    }
-
-    .eff-item.after .v { color: var(--accent); }
-
-    .eff-arrow { color: var(--accent); font-size: 18px; }
-
-    .eff-note {
-      margin-top: 8px;
-      padding-top: 14px;
-      border-top: 1px solid var(--line);
-      font-size: 13.5px;
-      color: var(--text-light);
-      line-height: 1.8;
-    }
-
-    .eff-note b { color: var(--accent-deep); }
-
-    /* ========== 图片 ========== */
-    .img-grid { display: grid; gap: 14px; max-width: 720px; }
-
-    .img-grid.g2 { grid-template-columns: 1fr 1fr; }
-    .img-grid.g3 { grid-template-columns: 1fr 1fr; }
-
-    .img-grid .wide { grid-column: 1 / -1; }
-
-    .img-item {
-      position: relative;
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid var(--accent-border);
-      background: #EFEAE3;
-    }
-
-    .img-item img {
-      display: block;
-      width: 100%;
-      height: auto;
-      transition: transform 0.5s ease, filter 0.4s ease;
-      filter: brightness(0.94);
-    }
-
-    .img-item:hover img { transform: scale(1.03); filter: brightness(1); }
-
-    .img-cap {
-      position: absolute;
-      left: 0; right: 0; bottom: 0;
-      padding: 10px 12px;
-      font-size: 12px;
-      color: #fff;
-      background: linear-gradient(to top, rgba(45, 62, 58, 0.66), transparent);
-      letter-spacing: 0.5px;
-    }
-
-    .img-note {
-      font-size: 12.5px;
-      color: var(--text-mute);
-      margin-top: 12px;
-      letter-spacing: 0.5px;
-    }
-
-    /* UM3 小红书截图：完整展示，避免裁切 */
-    .img-item.fit { aspect-ratio: auto; background: #EFEAE3; }
-    .img-item.fit img { object-fit: contain; }
-
-    /* UM3 团队协作结果 */
-    .um3-res {
-      display: flex; flex-wrap: wrap; align-items: baseline; gap: 16px;
-      border: 1px solid var(--line); border-radius: 12px;
-      padding: 22px 24px; background: var(--card);
-    }
-    .um3-res-n { font-family: var(--serif); font-size: 34px; font-weight: 700; color: var(--text); line-height: 1; }
-    .um3-res-n small { font-size: 15px; font-weight: 400; color: var(--text-mute); margin-left: 4px; }
-    .um3-res-l { flex: 1; min-width: 220px; font-size: 13.5px; color: var(--text-light); line-height: 1.7; }
-
-    /* 流程链（横向） */
-    .chain {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .chain .node {
-      font-size: 13.5px;
-      padding: 7px 16px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--card);
-    }
-
-    .chain .node.ai {
-      border-color: var(--accent-border);
-      background: var(--accent-light);
-    }
-
-    .chain .ar { color: var(--accent); font-size: 13px; font-weight: 700; }
-
-    .tool-line {
-      font-size: 14.5px;
-      color: var(--text-light);
-      line-height: 1.9;
-    }
-
-    .tool-line b { color: var(--text); font-weight: 600; margin-right: 6px; }
-
-    /* ========== About ========== */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 52px;
-      align-items: start;
-    }
-
-    .avatar {
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 1px solid var(--accent-border);
-      box-shadow: 0 6px 24px rgba(201, 169, 110, 0.16);
-    }
-
-    .name-line {
-      display: flex;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 20px;
-    }
-
-    .name {
-      font-family: var(--serif);
-      font-size: 30px;
-      font-weight: 700;
-      letter-spacing: 2px;
-    }
-
-    .name-role {
-      font-size: 26px;
-      font-weight: 500;
-      color: var(--text-light);
-      letter-spacing: 1px;
-    }
-
-    .name-dash { color: var(--accent); font-size: 24px; }
-
-    .tag-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
-
-    .tag {
-      font-size: 12.5px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      color: var(--text);
-      padding: 6px 18px;
-      border: 1px solid var(--accent-border);
-      border-radius: 16px;
-      background: var(--accent-light);
-    }
-
-    .fact-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 34px;
-      margin-top: 28px;
-      padding-top: 20px;
-      border-top: 1px solid var(--line);
-    }
-
-    .fact-k {
-      font-size: 11.5px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      color: var(--text-mute);
-      text-transform: uppercase;
-      margin-bottom: 2px;
-    }
-
-    .fact-v { font-size: 14.5px; color: var(--text); }
-
-    /* ========== Campus ========== */
-    .minor {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-      gap: 48px;
-      align-items: center;
-      padding-top: 30px;
-      border-top: 1px solid var(--line);
-    }
-
-    .minor h4 {
-      font-size: 17px;
-      font-weight: 600;
-      font-family: var(--serif);
-      color: var(--text-light);
-      margin-bottom: 6px;
-    }
-
-    .minor p { font-size: 14px; color: var(--text-mute); line-height: 1.85; }
-
-    .minor-side {
-      font-size: 13.5px;
-      color: var(--text-mute);
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    /* ========== Contact ========== */
-    #contact { text-align: center; align-items: center; }
-
-    .contact-inner { max-width: 640px; }
-
-    .contact-title {
-      font-family: var(--serif);
-      font-size: 32px;
-      font-weight: 700;
-      margin-bottom: 28px;
-    }
-
-    .contact-info {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-      margin-bottom: 36px;
-      font-size: 15px;
-    }
-
-    .contact-facts {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px 40px;
-      text-align: left;
-      padding: 22px 28px;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      margin-bottom: 48px;
-    }
-
-    .contact-facts .f-k {
-      font-size: 11.5px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      color: var(--text-mute);
-      text-transform: uppercase;
-      margin-bottom: 2px;
-    }
-
-    .contact-facts .f-v { font-size: 14px; line-height: 1.8; }
-
-    .slogan {
-      font-family: var(--serif);
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      line-height: 1.9;
-      margin-bottom: 34px;
-    }
-
-    .slogan span { color: var(--accent); }
-
-    .copyright { font-size: 12.5px; color: var(--text-mute); letter-spacing: 1px; }
-
-    /* ========== 实习经历子模块样式 ========== */
-    /* 经历主体 */
-    .exp-title {
-      font-family: var(--serif);
-      font-size: 26px;
-      font-weight: 700;
-      line-height: 1.4;
-      margin-bottom: 8px;
-    }
-
-    .work-index {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 10px;
-      font-size: 13.5px;
-      color: var(--text-light);
-      letter-spacing: 0.5px;
-    }
-
-    .work-index .wi-ar { color: var(--accent); font-weight: 700; }
-
-    /* 工作模块标题（低于经历主体） */
-    .work-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px; }
-
-    .work-no {
-      font-family: var(--serif);
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--accent);
-      opacity: 0.6;
-      line-height: 1;
-    }
-
-    .work-title {
-      font-family: var(--serif);
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--text);
-      line-height: 1.5;
-    }
-    /* Timeline（运营流程链） */
-    .tl { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-    .tl .tl-node { font-size: 13.5px; padding: 7px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--text); }
-    .tl .tl-node.ai { border-color: var(--accent-border); background: var(--accent-light); }
-    .tl .tl-ar { color: var(--accent); font-size: 13px; font-weight: 700; }
-
-    /* Shots (完整展示，不裁切) */
-    .shot { margin: 0; }
-    .shot img { width: 100%; height: auto; display: block; border: 1px solid var(--accent-border); border-radius: 10px; background: #EFEAE3; }
-    .shot figcaption { font-size: 12.5px; color: var(--text-mute); margin-top: 8px; letter-spacing: 0.5px; }
-    .shot-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .shot-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-
-    .mentor-note { font-size: 13px; color: var(--text-mute); }
-
-    .ua-box { border: 1px dashed var(--accent-border); border-radius: 12px; padding: 18px 22px; background: var(--card); }
-    .ua-k { font-size: 13.5px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
-    .ua-en { font-size: 10.5px; font-weight: 700; letter-spacing: 1.5px; color: var(--accent); text-transform: uppercase; margin-left: 6px; }
-    .ua-v { font-size: 13.5px; color: var(--text-light); line-height: 1.85; }
-
-    .res-row { display: flex; align-items: baseline; gap: 22px; padding: 20px 26px; border: 1px solid var(--accent-border); border-radius: 12px; background: var(--card); }
-    .res-num { font-family: var(--serif); font-size: 38px; font-weight: 700; color: var(--accent); line-height: 1; flex-shrink: 0; }
-    .res-num small { font-size: 15px; }
-    .res-meta { flex: 1; }
-    .res-l { font-size: 14.5px; font-weight: 600; color: var(--text); }
-    .res-note { font-size: 12.5px; color: var(--text-mute); margin-top: 2px; }
-
-    .note-soft { font-size: 13px; color: var(--text-mute); margin-top: 14px; padding: 12px 16px; border-left: 2px solid var(--line); border-radius: 0 6px 6px 0; line-height: 1.85; }
-
-    .ref-list { list-style: none; counter-reset: r; }
-    .ref-list li { counter-increment: r; font-size: 14.5px; color: var(--text-light); line-height: 1.95; padding: 14px 0 14px 44px; border-bottom: 1px solid var(--line); position: relative; }
-    .ref-list li:last-child { border-bottom: none; }
-    .ref-list li::before { content: counter(r, decimal-leading-zero); position: absolute; left: 0; top: 14px; font-family: var(--serif); font-size: 18px; font-weight: 700; color: var(--accent); opacity: 0.6; letter-spacing: 1px; }
-    .ref-list li b { color: var(--text); font-weight: 600; }
-
-    /* ========== 新增：子标题 / 标签 / 结果条 / 证据网格 / 时间可视化 / 校园数据 ========== */
-    .sub.sub-sm { font-size: 17px; margin-bottom: 10px; }
-
-    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
-    .tag-row span { font-size: 12.5px; color: var(--text-light); padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); }
-
-    .res-strip { display: flex; align-items: baseline; gap: 16px; padding: 18px 22px; border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 10px; background: var(--card); }
-    .res-strip .rs-n { font-family: var(--serif); font-size: 34px; font-weight: 700; color: var(--accent-deep); line-height: 1; }
-    .res-strip .rs-n small { font-size: 16px; }
-    .res-strip .rs-l { font-size: 13.5px; color: var(--text-light); }
-
-    /* 证据网格：4:3 统一框；UM3 类（.two/.um3）整体占位宽度 = 上方文字宽度 */
-    .ev-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: start; }
-    .ev-grid.two { grid-template-columns: 1fr 1fr; }
-    .ev-grid .img-item { aspect-ratio: 4 / 3; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #EFEAE3; }
-    /* 校园区：图片移到文字下方，一行 3 张，宽度与上方文字一致，3:4 比例 */
-    .ev-grid.three { margin-top: 22px; }
-    .ev-grid.three .img-item { aspect-ratio: 3 / 4; }
-    .ev-grid .img-item img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-    .ev-grid .img-cap { font-size: 12px; }
-
-    /* 时间可视化：◷3h → ◷1h + 环形示意 */
-    .time-viz { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; }
-    .clock { width: 76px; height: 76px; border-radius: 50%; border: 2px solid var(--text-mute); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; background: var(--card); }
-    .clock.is-ai { border-color: var(--accent); background: var(--accent-light); }
-    .clock-num { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--text); line-height: 1; }
-    .clock.is-ai .clock-num { color: var(--accent-deep); }
-    .clock-cap { font-size: 11px; color: var(--text-mute); }
-    .tv-arrow { font-size: 22px; color: var(--accent); font-weight: 700; }
-    .tv-ring { position: relative; width: 76px; height: 76px; }
-    .tv-ring svg { width: 100%; height: 100%; }
-    .tv-ring-num { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 16px; font-weight: 700; color: var(--accent-deep); }
-    .tv-note { font-size: 12.5px; color: var(--text-mute); margin-top: 12px; line-height: 1.7; }
-
-    /* 校园数据：2.2w+ 醒目 + 80+ */
-    .campus-stats { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; padding: 20px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 4px; }
-    .cs-big { display: flex; align-items: center; gap: 14px; }
-    .cs-ico { width: 46px; height: 30px; flex-shrink: 0; }
-    .cs-big-txt { display: flex; flex-direction: column; }
-    .cs-n { font-family: var(--serif); font-size: 42px; font-weight: 700; color: var(--accent-deep); line-height: 1; }
-    .cs-n small { font-size: 20px; }
-    .cs-l { font-size: 13px; color: var(--text-light); margin-top: 4px; }
-    .cs-mini { display: flex; flex-direction: column; }
-    .cs-n2 { font-family: var(--serif); font-size: 26px; font-weight: 700; color: var(--text); line-height: 1; }
-    .cs-n2 small { font-size: 14px; }
-    .cs-l2 { font-size: 12.5px; color: var(--text-mute); margin-top: 4px; }
-
-    @media (max-width: 768px) {
-      .split.stretch { grid-template-columns: 1fr; align-items: start; }
-      .ev-grid { grid-template-columns: 1fr 1fr; }
-      .ev-grid.two { grid-template-columns: 1fr; }
-      .campus-stats { gap: 16px; }
-      .cs-n { font-size: 36px; }
-    }
-    @media (max-width: 480px) {
-      .ev-grid { grid-template-columns: 1fr; }
-    }
-
-    /* 模块副标题：强化 02 / 03 边界 */
-    .module-sub { font-size: 13.5px; color: var(--text-light); margin-top: 6px; letter-spacing: 0.3px; }
-
-    /* UM3 证据图：与 .two 同布局，整体占位宽度 = 上方正文宽度 */
-    .ev-grid.um3 { grid-template-columns: 1fr 1fr; }
-
-    /* ========== Animation ========== */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-    .fade-up.d1 { transition-delay: 0.1s; }
-    .fade-up.d2 { transition-delay: 0.2s; }
-    .fade-up.d3 { transition-delay: 0.3s; }
-
-    /* ========== Responsive ========== */
-    @media (max-width: 900px) {
-      .hero-sub { white-space: normal; font-size: 14.5px; max-width: 640px; margin-left: auto; margin-right: auto; }
-      .split, .minor { grid-template-columns: 1fr; gap: 30px; }
-      .flow-wrap { grid-template-columns: 1fr; gap: 18px; }
-    }
-
-    @media (max-width: 768px) {
-      .nav-inner { padding: 0 8px; gap: 0; }
-      .nav-link { font-size: 11.5px; padding: 6px 7px; }
-      .nav-link i { display: none; }
-
-      section { padding: 62px 6vw; }
-      .hero-title { font-size: 32px; }
-      .metric-row { grid-template-columns: 1fr; }
-      .metric { border-left: none; border-top: 1px solid var(--line); padding: 20px 0; }
-      .metric:first-child { border-top: none; }
-      .metric-viz { justify-content: flex-start; }
-      .mv-bars, .mv-cols { max-width: 260px; }
-
-      .about-grid { grid-template-columns: 1fr; gap: 26px; }
-      .avatar { width: 160px; height: 160px; }
-      .name { font-size: 26px; }
-      .name-role { font-size: 22px; }
-      .module-title { font-size: 26px; }
-      .module-num { font-size: 26px; }
-      .p-title { font-size: 21px; }
-      .sub { font-size: 17px; }
-      .duty-list { grid-template-columns: 1fr; }
-      .chart-area { gap: 24px; }
-      .bar { width: 30px; }
-      .contact-facts { grid-template-columns: 1fr; gap: 16px; }
-      .contact-info { flex-direction: column; gap: 12px; }
-
-      /* 实习子模块响应式 */
-      .shot-grid { grid-template-columns: 1fr 1fr; }
-      .shot-row { grid-template-columns: 1fr; }
-      .res-row { flex-direction: column; gap: 8px; align-items: flex-start; }
-      .exp-title { font-size: 22px; }
-      .work-title { font-size: 18px; }
-    }
-
-    @media (max-width: 480px) {
-      .nav-link { font-size: 10.5px; padding: 6px 5px; }
-      .hero-title { font-size: 27px; }
-      .shot-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>许佳丽 · 能力与实践型个人作品集｜内容 · 用户 · AI应用</title>
+  <meta name="description" content="面向内容运营、用户运营、产品运营与 AI 应用方向的个人作品集：内容账号运营、UGC 素材处理与 AI 辅助流程、用户反馈整理、内容生产与 AI 视觉创作。">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-  <!-- ========== Nav ========== -->
-  <nav id="navbar">
-    <div class="nav-inner">
-      <a href="#about" class="nav-link"><i>01</i>关于我</a>
-      <a href="#internship" class="nav-link"><i>02</i>实习经历</a>
-      <a href="#aiproject" class="nav-link"><i>03</i>AI项目</a>
-      <a href="#campus" class="nav-link"><i>04</i>校园经历</a>
-      <a href="#contact" class="nav-link"><i>05</i>联系</a>
+  <!-- ==================== NAV ==================== -->
+  <nav class="nav">
+    <div class="nav-inner wrap">
+      <a class="nav-link" href="#home"><span class="n">01</span>首页</a>
+      <a class="nav-link" href="#practice"><span class="n">02</span>运营实践</a>
+      <a class="nav-link" href="#content"><span class="n">03</span>内容与用户</a>
+      <a class="nav-link" href="#workflow"><span class="n">04</span>AI工作流</a>
+      <a class="nav-link" href="#creative"><span class="n">05</span>AI创意项目</a>
+      <a class="nav-link" href="#about"><span class="n">06</span>关于我</a>
     </div>
   </nav>
 
-  <!-- ========== Home：职业定位 ========== -->
+  <!-- ==================== 01 HOME ==================== -->
   <section id="home">
-    <div class="hero fade-up">
-      <h1 class="hero-title">AI驱动内容增长运营</h1>
-      <p class="hero-sub">具备内容策划、新媒体运营与AIGC工作流实践经验，探索AI如何提升内容生产效率与用户触达效果。</p>
+    <div class="wrap">
+      <div class="grid">
+        <div class="s9">
+          <p class="hero-tag reveal">能力与实践型个人作品集</p>
+          <h1 class="hero-name reveal d1">许佳丽</h1>
+          <p class="hero-meta reveal d1">西南交通大学 · 汉语言文学（2023–2027）</p>
 
-      <div class="hero-aims">
-        <span class="aim">AI产品运营</span>
-        <span class="aim">AIGC运营</span>
-        <span class="aim">内容增长运营</span>
-      </div>
+          <p class="hero-lead reveal d2">关注内容、用户与 AI 应用在互联网运营场景中的结合。</p>
 
-      <div class="metric-row">
-        <div class="metric fade-up d1">
-          <div class="metric-viz mv-i">
-            <svg viewBox="0 0 64 46" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-              <polyline points="4,40 24,28 40,32 60,10" fill="none" stroke="var(--accent)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-              <polygon points="60,10 50,13 57,20" fill="var(--accent)"/>
-              <circle cx="24" cy="28" r="2.6" fill="var(--text-mute)"/>
-              <circle cx="40" cy="32" r="2.6" fill="var(--text-mute)"/>
-            </svg>
+          <p class="hero-axis reveal d2">内容运营 <span class="x">×</span> 用户理解 <span class="x">×</span> AI应用</p>
+
+          <div class="role-row reveal d3">
+            <span class="role">内容运营</span>
+            <span class="role">用户运营</span>
+            <span class="role">产品运营</span>
+            <span class="role">AI 应用方向（开放）</span>
           </div>
-          <div class="metric-num">3,100<small>+</small></div>
-          <div class="metric-label">C/D 账号实习期间累计粉丝增长</div>
-        </div>
-
-        <div class="metric fade-up d2">
-          <div class="metric-viz mv-i">
-            <svg viewBox="0 0 44 52" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-              <rect x="9" y="4" width="26" height="44" rx="3" fill="none" stroke="var(--accent)" stroke-width="2.6"/>
-              <line x1="15" y1="15" x2="29" y2="15" stroke="var(--text-mute)" stroke-width="2" stroke-linecap="round"/>
-              <line x1="15" y1="23" x2="29" y2="23" stroke="var(--text-mute)" stroke-width="2" stroke-linecap="round"/>
-              <line x1="15" y1="31" x2="25" y2="31" stroke="var(--text-mute)" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="metric-num">80<small>+</small></div>
-          <div class="metric-label">公众号累计发布内容（篇）</div>
-        </div>
-
-        <div class="metric hl fade-up d3">
-          <div class="metric-viz mv-i">
-            <svg viewBox="0 0 64 40" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-              <path d="M2,20 C12,6 52,6 62,20 C52,34 12,34 2,20 Z" fill="none" stroke="var(--accent)" stroke-width="2.6"/>
-              <circle cx="32" cy="20" r="7.5" fill="none" stroke="var(--accent)" stroke-width="2.6"/>
-              <circle cx="32" cy="20" r="2.6" fill="var(--accent)"/>
-            </svg>
-          </div>
-          <div class="metric-num">2.2<small>w+</small></div>
-          <div class="metric-label">公众号单篇最高阅读</div>
         </div>
       </div>
 
-      <div class="hero-en">AI Content Growth Portfolio</div>
-
-      <div class="scroll-hint">
-        <span>向下浏览</span>
-        <div class="scroll-arrow">↓</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== 01 About ========== -->
-  <section id="about">
-    <div class="inner">
-      <div class="module-head fade-up">
-        <span class="module-num">01</span>
-        <div>
-          <div class="eyebrow">About</div>
-          <h2 class="module-title">关于我</h2>
+      <!-- 核心能力 -->
+      <div class="grid caps">
+        <div class="s3 reveal">
+          <div class="cap">
+            <p class="cap-no">01</p>
+            <p class="cap-k">内容运营</p>
+            <p class="cap-d">公众号与小红书图文的选题整理、编辑、排版与发布，能按固定节奏持续产出。</p>
+          </div>
+        </div>
+        <div class="s3 reveal d1">
+          <div class="cap">
+            <p class="cap-no">02</p>
+            <p class="cap-k">用户理解</p>
+            <p class="cap-d">从评论、私信与应用反馈中归纳真实需求，把用户的原话转成可用的选题与表达。</p>
+          </div>
+        </div>
+        <div class="s3 reveal d2">
+          <div class="cap">
+            <p class="cap-no">03</p>
+            <p class="cap-k">数据整理</p>
+            <p class="cap-d">UGC 素材与用户信息的采集、清洗、归类，输出可查阅的结构化表格。</p>
+          </div>
+        </div>
+        <div class="s3 reveal d3">
+          <div class="cap">
+            <p class="cap-no">04</p>
+            <p class="cap-k">AI 应用</p>
+            <p class="cap-d">用 LLM 辅助重复性的内容整理与格式处理，探索 AI 在运营场景中的可用方式。</p>
+          </div>
         </div>
       </div>
 
-      <div class="about-grid">
-        <img src="avatar.jpg" class="avatar fade-up" alt="许佳丽">
-
-        <div class="fade-up d1">
-          <div class="name-line">
-            <span class="name">许佳丽</span>
-            <span class="name-dash">—</span>
-            <span class="name-role">AI内容增长运营者</span>
+      <!-- 数字 + 解释 -->
+      <div class="grid metrics">
+        <div class="s4 reveal">
+          <div class="metric">
+            <p class="metric-n">3,100<span class="u">+</span></p>
+            <p class="metric-l">账号运营期间粉丝增长</p>
+            <p class="metric-d">负责矩阵账号内容发布与用户互动，账号持续运营期间实现粉丝增长（账号 A 2,900→4,700，账号 B 1,900→3,200）。</p>
           </div>
-
-          <p class="body-text">具备内容策划、新媒体运营和AI工具应用经验。</p>
-          <p class="body-text">关注AI如何进入真实工作流程，提升内容生产效率与用户触达效果。</p>
-
-          <div class="tag-row">
-            <span class="tag">AI Workflow</span>
-            <span class="tag">Content Operation</span>
-            <span class="tag">AIGC Production</span>
-            <span class="tag">User Growth</span>
+        </div>
+        <div class="s4 reveal d1">
+          <div class="metric">
+            <p class="metric-n">80<span class="u">+ 篇</span></p>
+            <p class="metric-l">参与内容制作</p>
+            <p class="metric-d">公众号推文的编辑、排版、校对与审核发布，保持栏目视觉与发布节奏统一。</p>
           </div>
-
-          <div class="fact-row">
-            <div>
-              <div class="fact-k">Education</div>
-              <div class="fact-v">西南交通大学 · 汉语言文学</div>
-            </div>
-            <div>
-              <div class="fact-k">Target Role</div>
-              <div class="fact-v">AI产品运营 / AIGC运营 / 内容增长运营</div>
-            </div>
+        </div>
+        <div class="s4 reveal d2">
+          <div class="metric">
+            <p class="metric-n">2.2<span class="u">w+</span></p>
+            <p class="metric-l">单篇内容最高阅读量</p>
+            <p class="metric-d">参与制作的公众号推文中阅读量最高的一篇，选题来自读者关注话题。</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== 02 Internship ========== -->
-  <section id="internship">
-    <div class="inner">
-      <div class="module-head fade-up">
-        <span class="module-num">02</span>
-        <div>
-          <div class="eyebrow">Internship</div>
-          <h2 class="module-title">实习经历</h2>
-          <p class="module-sub">真实公司实习 · 在猩际教育参与账号内容运营与 App 冷启动运营</p>
+  <!-- ==================== 02 OPERATING PRACTICE ==================== -->
+  <section id="practice">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <span class="sec-num">02</span>
+        <div class="hd">
+          <p class="eyebrow">Operating Practice</p>
+          <h2 class="sec-title">运营实践</h2>
+          <p class="sec-sum">实习期间实际负责的工作与对应结果。</p>
+        </div>
+      </header>
+
+      <!-- Case 01 -->
+      <article class="case reveal">
+        <div class="case-head">
+          <span class="case-no">CASE 01</span>
+          <h3 class="case-title">内容账号运营实践</h3>
+          <p class="case-sum">负责矩阵账号内容发布与用户互动，账号持续运营期间实现粉丝增长。</p>
+          <p class="case-meta">猩际教育 · 运营实习 · 2026.04–2026.07 · 矩阵账号</p>
+        </div>
+
+        <div class="grid">
+          <div class="s7">
+            <div class="case-col">
+              <h4 class="sub-h">项目背景</h4>
+              <div class="sub-body">
+                <p class="body">两个内容账号需要保持稳定更新，并通过日常互动维持用户活跃度。</p>
+              </div>
+            </div>
+
+            <div class="case-col">
+              <h4 class="sub-h">我的行动</h4>
+              <div class="sub-body">
+                <ul class="bullets">
+                  <li>按选题方向制作并发布小红书图文内容，保持日更节奏</li>
+                  <li>维护评论区与私信，回复用户提问并收集常见需求</li>
+                  <li>根据发布后的阅读与互动情况，调整封面与标题表达</li>
+                  <li>记录账号日常数据，形成可对照的更新记录</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="case-col">
+              <h4 class="sub-h">方法流程</h4>
+              <div class="sub-body">
+                <div class="flow">
+                  <div class="flow-step"><span class="fs-no">01</span><span class="fs-t">选题整理</span></div>
+                  <span class="flow-arrow" aria-hidden="true">→</span>
+                  <div class="flow-step"><span class="fs-no">02</span><span class="fs-t">内容制作</span></div>
+                  <span class="flow-arrow" aria-hidden="true">→</span>
+                  <div class="flow-step"><span class="fs-no">03</span><span class="fs-t">定时发布</span></div>
+                  <span class="flow-arrow" aria-hidden="true">→</span>
+                  <div class="flow-step"><span class="fs-no">04</span><span class="fs-t">互动维护</span></div>
+                  <span class="flow-arrow" aria-hidden="true">→</span>
+                  <div class="flow-step"><span class="fs-no">05</span><span class="fs-t">复盘调整</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="s5">
+            <h4 class="sub-h">项目结果</h4>
+            <div class="res sub-body">
+              <p class="res-n">3,100<span class="u">+</span></p>
+              <p class="res-l">账号累计净增粉丝</p>
+              <p class="res-d">账号 A 2,900 → 4,700（+1,800），账号 B 1,900 → 3,200（+1,300）。</p>
+            </div>
+
+            <div class="chart" style="margin-top: 26px;">
+              <p class="chart-title">账号粉丝变化</p>
+              <div class="chart-body">
+                <div class="cg">
+                  <div class="cg-bars">
+                    <div class="bar b" style="height:61.7%"><span>2,900</span></div>
+                    <div class="bar a" style="height:100%"><span>4,700</span></div>
+                  </div>
+                  <p class="cg-label">账号 A <em>+1,800</em></p>
+                </div>
+                <div class="cg">
+                  <div class="cg-bars">
+                    <div class="bar b" style="height:40.4%"><span>1,900</span></div>
+                    <div class="bar a" style="height:68.1%"><span>3,200</span></div>
+                  </div>
+                  <p class="cg-label">账号 B <em>+1,300</em></p>
+                </div>
+              </div>
+              <div class="chart-legend">
+                <span><i class="dot b"></i>实习开始</span>
+                <span><i class="dot a"></i>实习结束</span>
+              </div>
+            </div>
+            <p class="note">数据来自实习期间账号后台记录。</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case 02 -->
+      <article class="case reveal">
+        <div class="case-head">
+          <span class="case-no">CASE 02</span>
+          <h3 class="case-title">UGC 素材处理与 AI 辅助流程</h3>
+          <p class="case-sum">把 UGC 素材整理拆成 5 个环节，用 LLM 承接其中的格式整理，单轮耗时从约 3 小时降到约 1 小时。</p>
+          <p class="case-meta">猩际教育 · 运营实习 · 内容生产支持</p>
+        </div>
+
+        <div class="grid">
+          <div class="s7">
+            <div class="case-col">
+              <h4 class="sub-h">项目背景</h4>
+              <div class="sub-body">
+                <p class="body">UGC 素材来源分散、格式不统一，人工逐条整理需要反复复制、对齐与改写，容易出现格式不一致。</p>
+              </div>
+            </div>
+
+            <div class="case-col">
+              <h4 class="sub-h">我的行动</h4>
+              <div class="sub-body">
+                <ul class="bullets">
+                  <li>采集 UGC 素材，按统一字段录入表格</li>
+                  <li>用 Excel 做基础清洗：去重、格式统一、缺失字段补齐</li>
+                  <li>人工校验关键信息，确认内容可进入发布环节</li>
+                  <li>把整理要求写成固定提示词，交给 LLM 做格式转换</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="case-col">
+              <h4 class="sub-h">方法流程</h4>
+              <div class="sub-body">
+                <div class="flow">
+                  <div class="flow-step"><span class="fs-no">01</span><span class="fs-t">UGC 素材采集</span></div>
+                  <span class="flow-arrow" aria-hidden="true">→</span>
+                  <div class="flow-step"><span class="fs-no">02</span><span class="fs-t">Excel 数据清洗</span></div>
+                  <span class="flow-arrow" aria-hidden="true">→</span>
+                  <div class="flow-step"><span class="fs-no">03</span><span class="fs-t">人工校验</span></div>
+                  <span class="flow-arrow" aria-hidden="true">→</span>
+                  <div class="flow-step is-ai"><span class="fs-no">04</span><span class="fs-t">LLM 格式整理</span><span class="fs-tag">AI 介入</span></div>
+                  <span class="flow-arrow" aria-hidden="true">→</span>
+                  <div class="flow-step"><span class="fs-no">05</span><span class="fs-t">标准化输出</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="s5">
+            <h4 class="sub-h">项目结果</h4>
+            <div class="res sub-body">
+              <p class="res-n">3<span class="u">h</span><span class="arrow">→</span>1<span class="u">h</span></p>
+              <p class="res-l">单轮整理耗时变化</p>
+              <p class="res-d">重复环节由人工逐条处理，改为 AI 辅助整理 + 人工确认。耗时为个人工作记录，非精确实验统计。</p>
+            </div>
+
+            <div class="panel" style="margin-top: 30px;">
+              <p class="panel-k">AI 在流程中的位置</p>
+              <p class="panel-d">AI 介入在「人工校验之后、标准化输出之前」，只承担格式整理与归类工作。</p>
+              <p class="panel-d">素材判断、信息准确性与最终确认由人工完成，AI 不参与决策。</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case 03 -->
+      <article class="case reveal">
+        <div class="case-head">
+          <span class="case-no">CASE 03</span>
+          <h3 class="case-title">用户反馈整理</h3>
+          <p class="case-sum">在新 App 冷启动阶段收集并归类用户反馈，输出一份可按维度查阅的意见记录。</p>
+          <p class="case-meta">猩际教育 · 运营实习 · App 冷启动阶段</p>
+        </div>
+
+        <div class="grid">
+          <div class="s7">
+            <div class="case-col">
+              <h4 class="sub-h">项目背景</h4>
+              <div class="sub-body">
+                <p class="body">公司新 App 处于冷启动阶段，需要了解早期用户的真实使用感受，但反馈分散在不同渠道。</p>
+              </div>
+            </div>
+
+            <div class="case-col">
+              <h4 class="sub-h">我的行动</h4>
+              <div class="sub-body">
+                <ul class="bullets">
+                  <li>收集 App 内评论与应用商店的用户反馈</li>
+                  <li>按使用问题、功能建议、内容需求等维度归类整理</li>
+                  <li>标记高频反馈，形成可查阅的用户意见记录</li>
+                  <li>参与冷启动阶段的内容传播与用户获取</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="case-col">
+              <h4 class="sub-h">方法流程</h4>
+              <div class="sub-body">
+                <div class="flow">
+                  <div class="flow-step"><span class="fs-no">01</span><span class="fs-t">评论采集</span></div>
+                  <span class="flow-arrow" aria-hidden="true">→</span>
+                  <div class="flow-step"><span class="fs-no">02</span><span class="fs-t">维度归类</span></div>
+                  <span class="flow-arrow" aria-hidden="true">→</span>
+                  <div class="flow-step"><span class="fs-no">03</span><span class="fs-t">高频标记</span></div>
+                  <span class="flow-arrow" aria-hidden="true">→</span>
+                  <div class="flow-step"><span class="fs-no">04</span><span class="fs-t">记录交付</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="s5">
+            <h4 class="sub-h">项目结果</h4>
+            <div class="res sub-body">
+              <p class="res-txt">输出一份按维度归类的用户反馈记录，供团队在内容与运营上参考。</p>
+              <p class="res-d">个人负责反馈的收集、归类与记录整理。</p>
+            </div>
+
+            <figure class="fig" style="margin-top: 30px;">
+              <div class="media r-2x1">
+                <img src="assets/img/um3-brief.png" alt="产品信息整理材料" loading="lazy" decoding="async">
+              </div>
+              <figcaption>产品信息整理材料 · 用于理解产品定位</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="grid g-top" style="margin-top: 26px;">
+          <div class="s7">
+            <figure class="fig">
+              <div class="media r-wide">
+                <img src="assets/img/xhs-home.png" alt="App 相关小红书账号主页" loading="lazy" decoding="async">
+              </div>
+              <figcaption>App 相关小红书账号主页</figcaption>
+            </figure>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ==================== 03 CONTENT & USER ==================== -->
+  <section id="content" class="alt">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <span class="sec-num">03</span>
+        <div class="hd">
+          <p class="eyebrow">Content &amp; User</p>
+          <h2 class="sec-title">内容与用户</h2>
+          <p class="sec-sum">能持续产出内容，也能把用户说的话整理成选题。</p>
+        </div>
+      </header>
+
+      <!-- 微信公众号 -->
+      <div class="block reveal">
+        <div class="grid">
+          <div class="s8">
+            <div class="block-head">
+              <h3 class="block-title">微信公众号</h3>
+              <p class="block-sum">围绕读者关注点参与选题讨论，完成推文的编辑、排版与审核发布，并保持栏目视觉统一。</p>
+            </div>
+            <p class="block-meta">惟悦工作室 · 公众号内容运营 · 2025.03–2026.07</p>
+
+            <h4 class="sub-h" style="margin-top: 30px;">我的行动</h4>
+            <div class="sub-body">
+              <ul class="duties">
+                <li>内容编辑与校对</li>
+                <li>排版与视觉统一</li>
+                <li>审核与发布管理</li>
+                <li>参与部分选题讨论</li>
+              </ul>
+            </div>
+          </div>
+          <div class="s4">
+            <h4 class="sub-h">内容规模</h4>
+            <div class="mini-stats sub-body">
+              <div>
+                <p class="ms-n">80<span class="u">+ 篇</span></p>
+                <p class="ms-l">累计参与制作</p>
+              </div>
+              <div>
+                <p class="ms-n">2.2<span class="u">w+</span></p>
+                <p class="ms-l">单篇最高阅读</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid g-top" style="margin-top: 34px;">
+          <div class="s4">
+            <figure class="fig">
+              <div class="media r-43"><img src="assets/img/wechat-01.jpg" alt="公众号推文，参与编辑与排版" loading="lazy" decoding="async"></div>
+              <figcaption>公众号推文 · 参与编辑与排版</figcaption>
+            </figure>
+          </div>
+          <div class="s4">
+            <figure class="fig">
+              <div class="media r-43"><img src="assets/img/wechat-02.jpg" alt="公众号推文，参与编辑与排版" loading="lazy" decoding="async"></div>
+              <figcaption>公众号推文 · 参与编辑与排版</figcaption>
+            </figure>
+          </div>
+          <div class="s4">
+            <figure class="fig">
+              <div class="media r-43"><img src="assets/img/wechat-03.jpg" alt="公众号推文，参与编辑与排版" loading="lazy" decoding="async"></div>
+              <figcaption>公众号推文 · 参与编辑与排版</figcaption>
+            </figure>
+          </div>
         </div>
       </div>
 
-      <!-- 实习总介绍 -->
-      <div class="block fade-up" style="padding-bottom: 30px;">
-        <h3 class="exp-title">猩际教育｜运营实习</h3>
-        <p class="p-oneline">2026.04 – 2026.07 · 运营实习 · 参与账号内容运营，以及公司新开发 App「UM3」的冷启动运营。</p>
-        <div class="work-index">
-          <span>01 账号 A/B｜视频剪辑 &amp; 封面</span><span class="wi-ar">·</span>
-          <span>02 账号 C/D｜小红书日更 &amp; 增长</span><span class="wi-ar">·</span>
-          <span>03 AI辅助内容生产</span><span class="wi-ar">·</span>
-          <span>04 UM3 App 冷启动运营</span>
+      <!-- 小红书内容运营 -->
+      <div class="block reveal">
+        <div class="grid">
+          <div class="s8">
+            <div class="block-head">
+              <h3 class="block-title">小红书内容运营</h3>
+              <p class="block-sum">围绕用户实际提问整理资料型内容，保持日更发布；根据用户反馈调整选题方向与标题表达。</p>
+            </div>
+            <p class="block-meta">实习期间矩阵账号 · 日更节奏 · 用户需求型内容</p>
+
+            <h4 class="sub-h" style="margin-top: 30px;">我的行动</h4>
+            <div class="sub-body">
+              <ul class="duties">
+                <li>用户需求型资料整理</li>
+                <li>图文内容制作</li>
+                <li>日更发布与维护</li>
+                <li>评论与私信互动</li>
+              </ul>
+            </div>
+          </div>
+          <div class="s4">
+            <h4 class="sub-h">内容特点</h4>
+            <div class="sub-body">
+              <p class="panel-d" style="margin-top: 0;">以「用户正在问什么」为起点整理内容，而不是先定选题再找用户。</p>
+              <p class="panel-d">保持高频更新，用持续产出验证选题方向是否成立。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid g-top" style="margin-top: 34px;">
+          <div class="s6">
+            <figure class="fig">
+              <div class="media r-43"><img src="assets/img/xhs-01.png" alt="小红书图文内容" loading="lazy" decoding="async"></div>
+              <figcaption>小红书图文内容 · 实习期间制作</figcaption>
+            </figure>
+          </div>
+          <div class="s6">
+            <figure class="fig">
+              <div class="media r-43"><img src="assets/img/xhs-02.png" alt="小红书图文内容" loading="lazy" decoding="async"></div>
+              <figcaption>小红书图文内容 · 实习期间制作</figcaption>
+            </figure>
+          </div>
+          <div class="s6">
+            <figure class="fig">
+              <div class="media r-43"><img src="assets/img/xhs-03.png" alt="小红书图文内容" loading="lazy" decoding="async"></div>
+              <figcaption>小红书图文内容 · 实习期间制作</figcaption>
+            </figure>
+          </div>
+          <div class="s6">
+            <figure class="fig">
+              <div class="media r-43"><img src="assets/img/xhs-04.png" alt="小红书图文内容" loading="lazy" decoding="async"></div>
+              <figcaption>小红书图文内容 · 实习期间制作</figcaption>
+            </figure>
+          </div>
         </div>
       </div>
 
-      <!-- 01｜账号 A/B -->
-      <div class="block fade-up">
-        <div class="work-head">
-          <span class="work-no">01</span>
-          <h4 class="work-title">账号 A/B｜视频剪辑 &amp; 封面制作</h4>
+      <!-- 视频内容 -->
+      <div class="block reveal">
+        <div class="grid">
+          <div class="s8">
+            <div class="block-head">
+              <h3 class="block-title">视频内容</h3>
+              <p class="block-sum">实习期间参与制作的引流短视频，负责素材整理、剪辑与封面输出。</p>
+            </div>
+            <p class="block-meta">选取 3 条实习期间代表短视频 · 竖版 3:4 原比例 · 点击播放</p>
+          </div>
         </div>
 
-        <div class="split">
-          <div>
-            <div class="sub sub-sm">我的工作</div>
-            <p class="body-text">负责账号 A/B 的视频剪辑与封面制作，根据内容主题完成素材整理、视频剪辑及封面视觉输出。</p>
-            <p class="body-text">根据内容主题调整标题与封面表达，并结合实际发布反馈持续优化首屏呈现。</p>
-            <ul class="duty-list" style="margin-top: 16px;">
-              <li>素材整理<span>按内容主题筛选与组织视频素材</span></li>
-              <li>视频剪辑<span>完成成片剪辑与输出</span></li>
-              <li>封面制作<span>标题与封面视觉表达</span></li>
-              <li>持续迭代<span>结合发布反馈优化首屏呈现</span></li>
+        <div class="grid g-top" style="margin-top: 30px;">
+          <div class="s4">
+            <figure class="fig">
+              <div class="media video r-34" data-src="assets/video/video-01.mp4" data-poster="assets/img/video-01-poster.jpg">
+                <div class="video-stage"><img class="video-poster" src="assets/img/video-01-poster.jpg" alt="引流短视频 1 封面" loading="lazy" decoding="async"></div>
+                <button class="video-play" type="button" aria-label="播放视频 01"></button>
+                <div class="video-hint"></div>
+              </div>
+              <figcaption>引流短视频 · 实习期间制作</figcaption>
+            </figure>
+          </div>
+          <div class="s4">
+            <figure class="fig">
+              <div class="media video r-34" data-src="assets/video/video-02.mp4" data-poster="assets/img/video-02-poster.jpg">
+                <div class="video-stage"><img class="video-poster" src="assets/img/video-02-poster.jpg" alt="引流短视频 2 封面" loading="lazy" decoding="async"></div>
+                <button class="video-play" type="button" aria-label="播放视频 02"></button>
+                <div class="video-hint"></div>
+              </div>
+              <figcaption>引流短视频 · 实习期间制作</figcaption>
+            </figure>
+          </div>
+          <div class="s4">
+            <figure class="fig">
+              <div class="media video r-34" data-src="assets/video/video-03.mp4" data-poster="assets/img/video-03-poster.jpg">
+                <div class="video-stage"><img class="video-poster" src="assets/img/video-03-poster.jpg" alt="引流短视频 3 封面" loading="lazy" decoding="async"></div>
+                <button class="video-play" type="button" aria-label="播放视频 03"></button>
+                <div class="video-hint"></div>
+              </div>
+              <figcaption>引流短视频 · 实习期间制作</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 04 AI WORKFLOW ==================== -->
+  <section id="workflow">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <span class="sec-num">04</span>
+        <div class="hd">
+          <p class="eyebrow">AI Workflow</p>
+          <h2 class="sec-title">AI 工作流</h2>
+          <p class="sec-sum">把一件原本要花 3 小时的事拆成 5 个环节，只在格式整理环节引入 AI。</p>
+        </div>
+      </header>
+
+      <div class="grid">
+        <div class="s7">
+          <div class="case-col">
+            <h4 class="sub-h">项目背景</h4>
+            <div class="sub-body">
+              <p class="body">UGC 素材需要逐条复制、改格式、对齐字段，人工处理既慢又容易格式不一致；真正需要人判断的，其实只有信息是否准确这一环节。</p>
+            </div>
+          </div>
+
+          <div class="case-col">
+            <h4 class="sub-h">我的行动</h4>
+            <div class="sub-body">
+              <ul class="bullets">
+                <li>先把整理工作拆成 5 个独立环节</li>
+                <li>区分「需要人工判断」与「可以交给工具」的部分</li>
+                <li>把整理要求写成固定的提示词模板</li>
+                <li>把人工校验放在 AI 之前，最终确认放在 AI 之后</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="s5">
+          <figure class="fig">
+            <div class="media r-45"><img src="assets/img/workflow-sop.jpg" alt="整理环节与 LLM 的过程记录" loading="lazy" decoding="async"></div>
+            <figcaption>整理环节与 LLM 的过程记录（提示词对话）</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="grid" style="margin-top: 48px;">
+        <div class="s12">
+          <h4 class="sub-h">方法流程</h4>
+          <div class="sub-body">
+            <div class="flow">
+              <div class="flow-step">
+                <span class="fs-no">01</span>
+                <span class="fs-t">UGC 素材采集</span>
+                <span class="fs-d">从多个渠道收集原始素材，按来源标记</span>
+              </div>
+              <span class="flow-arrow" aria-hidden="true">→</span>
+              <div class="flow-step">
+                <span class="fs-no">02</span>
+                <span class="fs-t">Excel 数据清洗</span>
+                <span class="fs-d">去重、统一格式、补齐缺失字段</span>
+              </div>
+              <span class="flow-arrow" aria-hidden="true">→</span>
+              <div class="flow-step">
+                <span class="fs-no">03</span>
+                <span class="fs-t">人工校验</span>
+                <span class="fs-d">核对关键信息，剔除错误与无效内容</span>
+              </div>
+              <span class="flow-arrow" aria-hidden="true">→</span>
+              <div class="flow-step is-ai">
+                <span class="fs-no">04</span>
+                <span class="fs-t">LLM 格式整理</span>
+                <span class="fs-d">按统一模板改写与归类，输出标准结构</span>
+                <span class="fs-tag">AI 介入</span>
+              </div>
+              <span class="flow-arrow" aria-hidden="true">→</span>
+              <div class="flow-step">
+                <span class="fs-no">05</span>
+                <span class="fs-t">标准化输出</span>
+                <span class="fs-d">人工确认后交付，进入内容制作环节</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid" style="margin-top: 52px;">
+        <div class="s6">
+          <div class="ba-col">
+            <p class="ba-k">Before</p>
+            <p class="ba-t">人工重复整理</p>
+            <ul>
+              <li>逐条复制、粘贴、手动对齐字段</li>
+              <li>格式不一致时需要反复返工</li>
+              <li>重复操作占用主要时间</li>
             </ul>
+            <p class="ba-time"><b>约 3<span class="u">h</span></b> / 单轮整理</p>
           </div>
-          <div class="fade-up d1">
-            <div class="note-soft">本账号为团队账号，暂无可对外展示的专属工作截图；视频剪辑与封面产出以实际发布内容为准。</div>
+        </div>
+        <div class="s6">
+          <div class="ba-col is-after">
+            <p class="ba-k">After</p>
+            <p class="ba-t">AI 辅助标准化处理</p>
+            <ul>
+              <li>清洗与校验后，由 LLM 按模板统一格式</li>
+              <li>人工只核对结果，不做重复搬运</li>
+              <li>输出结构一致，可直接交付</li>
+            </ul>
+            <p class="ba-time"><b>约 1<span class="u">h</span></b> / 单轮整理</p>
           </div>
         </div>
       </div>
 
-      <!-- 02｜账号 C/D -->
-      <div class="block fade-up">
-        <div class="work-head">
-          <span class="work-no">02</span>
-          <h4 class="work-title">账号 C/D｜小红书日更 &amp; 粉丝增长</h4>
-        </div>
-
-        <div class="split">
-          <div>
-            <div class="sub sub-sm">我的工作</div>
-            <p class="body-text">实习期间独立负责 C/D 账号的小红书图文日更，持续完成选题、文案、配图与发布。</p>
-            <div class="p-meta">实习周期 3 个月 · 双账号矩阵</div>
+      <div class="grid g-top" style="margin-top: 40px;">
+        <div class="s5">
+          <h4 class="sub-h">项目结果</h4>
+          <div class="res sub-body">
+            <p class="res-n">3<span class="u">h</span><span class="arrow">→</span>1<span class="u">h</span></p>
+            <p class="res-l">单轮整理耗时变化</p>
+            <p class="res-d">减少的是重复处理时间，判断与确认仍由人工完成。</p>
           </div>
-          <div class="fade-up d1">
-            <div class="res-strip">
-              <div class="rs-n" style="display:flex; align-items:center; gap:8px;">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
-                3,100<small>+</small>
-              </div>
-              <div class="rs-l">C/D 账号实习期间累计粉丝增长</div>
+        </div>
+        <div class="s7">
+          <div class="grid g-top">
+            <div class="s6">
+              <figure class="fig">
+                <div class="media r-169"><img src="assets/img/workflow-prompt.jpg" alt="AI 整理环节的提示词示例" loading="lazy" decoding="async"></div>
+                <figcaption>AI 整理环节的提示词示例</figcaption>
+              </figure>
             </div>
-            <p class="img-note" style="margin-top: 12px;">基于实际运营数据，未对起止粉丝量做虚构折算。</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- 03｜AI辅助内容生产 -->
-      <div class="block fade-up">
-        <div class="work-head">
-          <span class="work-no">03</span>
-          <h4 class="work-title">AI辅助内容生产</h4>
-        </div>
-
-        <div class="sub sub-sm">我的工作</div>
-        <p class="body-text">使用 LLM 辅助素材整理与内容初稿生成，并将重复性的内容整理步骤沉淀为可复用的提示词与操作流程。</p>
-
-        <div class="split" style="margin-top: 20px;">
-          <div class="flow-wrap fade-up">
-            <div class="flow-col">
-              <h4>传统流程</h4>
-              <div class="v-step">素材收集</div>
-              <div class="v-arrow">↓</div>
-              <div class="v-step">人工整理</div>
-              <div class="v-arrow">↓</div>
-              <div class="v-step">内容初稿</div>
-              <div class="flow-time">单次耗时 <b>约 3h</b></div>
+            <div class="s6">
+              <figure class="fig">
+                <div class="media r-169"><img src="assets/img/workflow-output.jpg" alt="整理后的输出示例" loading="lazy" decoding="async"></div>
+                <figcaption>整理后的输出示例</figcaption>
+              </figure>
             </div>
-
-            <div class="flow-col is-ai">
-              <h4>AI辅助流程</h4>
-              <div class="v-step">LLM辅助整理</div>
-              <div class="v-arrow">↓</div>
-              <div class="v-step">Prompt模板</div>
-              <div class="v-arrow">↓</div>
-              <div class="v-step">内容生成</div>
-              <div class="v-arrow">↓</div>
-              <div class="v-step">人工优化</div>
-              <div class="flow-time">单次耗时 <b>约 1h</b></div>
-            </div>
-          </div>
-
-          <div class="fade-up d1">
-            <div class="time-viz">
-              <div class="clock">
-                <div class="clock-num">3h</div>
-                <div class="clock-cap">原流程</div>
-              </div>
-              <div class="tv-arrow">→</div>
-              <div class="clock is-ai">
-                <div class="clock-num">1h</div>
-                <div class="clock-cap">AI辅助后</div>
-              </div>
-              <div class="tv-ring">
-                <svg viewBox="0 0 80 80" aria-hidden="true">
-                  <circle cx="40" cy="40" r="33" fill="none" stroke="rgba(45,62,58,0.12)" stroke-width="9"/>
-                  <circle cx="40" cy="40" r="33" fill="none" stroke="var(--accent)" stroke-width="9" stroke-linecap="round" stroke-dasharray="207.3" stroke-dashoffset="138.2" transform="rotate(-90 40 40)"/>
-                </svg>
-                <div class="tv-ring-num">−2h</div>
-              </div>
-            </div>
-            <div class="tv-note">单次内容制作耗时变化示意 · 原流程约 3 小时，AI 辅助后约 1 小时，减少约 2 小时重复处理（非精确实验统计）。</div>
-          </div>
-        </div>
-
-        <div class="sub sub-sm" style="margin-top: 22px;">工作展示</div>
-        <div class="ev-grid fade-up">
-          <div class="img-item">
-            <img src="ai工作流.jpg" alt="SOP文档">
-            <div class="img-cap">AI辅助内容生产 SOP</div>
-          </div>
-          <div class="img-item">
-            <img src="aiwork2.jpg" alt="Prompt模板">
-            <div class="img-cap">Prompt 模板</div>
-          </div>
-          <div class="img-item">
-            <img src="ai工作3.jpg" alt="内容产出">
-            <div class="img-cap">内容产出与优化</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 04｜UM3 App 冷启动运营 -->
-      <div class="block fade-up">
-        <div class="work-head">
-          <span class="work-no">04</span>
-          <h4 class="work-title">UM3 App｜冷启动运营</h4>
-        </div>
-
-        <div class="sub sub-sm">我的工作</div>
-        <p class="body-text">实习期间参与公司新开发 App「UM3 聊天学英语」的冷启动运营，主要参与产品信息整理、内容传播、社交媒体推广、宣传素材制作及用户获取协作，不涉及软件开发与产品设计。</p>
-        <ul class="duty-list" style="margin: 16px 0 22px;">
-          <li>产品信息整理<span>阅读与梳理产品 Brief，理解定位与功能卖点，为内容传播打底</span></li>
-          <li>内容传播<span>围绕「真实聊天学英语」定位，提炼中英双语翻译、点击查词查义等卖点</span></li>
-          <li>渠道推广<span>参与小红书 / 抖音 / 私域推广，用功能介绍、痛点内容帮助理解产品</span></li>
-          <li>素材制作<span>参与小红书推广素材策划与制作，并根据 mentor 反馈持续迭代</span></li>
-          <li>用户获取协作<span>参与冷启动阶段用户获取与推广协作</span></li>
-        </ul>
-
-        <div class="sub sub-sm">工作展示</div>
-        <div class="ev-grid two fade-up">
-          <div class="img-item">
-            <img src="um3.5.png" alt="UM3 产品 Brief">
-            <div class="img-cap">产品信息梳理材料（非本人产品规划）</div>
-          </div>
-          <div class="img-item">
-            <img src="um3.png" alt="UM3 小红书账号主页">
-            <div class="img-cap">UM3 小红书账号主页（团队账号）</div>
-          </div>
-        </div>
-
-        <div class="ev-grid two um3 fade-up" style="margin-top: 12px;">
-          <div class="img-item">
-            <img src="um3.1.png" alt="UM3 小红书推文 产品价值传播">
-            <div class="img-cap">产品价值传播｜「不止 HelloTalk」</div>
-          </div>
-          <div class="img-item">
-            <img src="um3.2.png" alt="UM3 小红书推文 用户痛点">
-            <div class="img-cap">用户痛点内容｜说英语时大脑空白</div>
-          </div>
-          <div class="img-item">
-            <img src="um3.3.png" alt="UM3 小红书推文 产品功能">
-            <div class="img-cap">产品功能展示｜单词收藏 / 点击查词查义</div>
-          </div>
-          <div class="img-item">
-            <img src="um3.4.png" alt="UM3 小红书推文 使用场景">
-            <div class="img-cap">使用场景传播｜1v1 双语对话</div>
-          </div>
-        </div>
-
-        <div class="res-strip fade-up" style="margin-top: 22px;">
-          <div class="rs-n">30–60<small> 人/天</small></div>
-          <div class="rs-l">团队整体冷启动阶段日均新增用户（团队结果，非个人独立贡献）</div>
-        </div>
-        <p class="img-note">目前暂无完整的下载、曝光、阅读、收藏、点赞及评论后台数据，因此不对这些指标进行虚构。</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========== 03 AI Project ========== -->
-  <section id="aiproject">
-    <div class="inner">
-      <div class="module-head fade-up">
-        <span class="module-num">03</span>
-        <div>
-          <div class="eyebrow">AI Project</div>
-          <h2 class="module-title">AI项目</h2>
-          <p class="module-sub">个人 AIGC 实践 · 自主完成的 AI 内容生产项目</p>
-        </div>
-      </div>
-
-      <div class="split stretch fade-up">
-        <div class="fade-up">
-          <h3 class="p-title">SCTP AI音乐MV｜AIGC内容生产实践</h3>
-          <p class="p-oneline">验证AI在文化内容生产中的可行性，跑通从创意构思到成片交付的完整AIGC生产链路。</p>
-
-          <div class="sub" style="margin-top: 26px;">项目背景</div>
-          <p class="body-text">以国风主题为实验对象，用AI音乐与AI视觉工具完成内容生产，探索AIGC工具链在真实创作流程中的可控性与复用方式。项目获评院级优秀结项。</p>
-
-          <div class="sub" style="margin-top: 26px;">AI创作流程</div>
-          <div class="chain">
-            <span class="node">创意构思</span><span class="ar">→</span>
-            <span class="node ai">Prompt设计</span><span class="ar">→</span>
-            <span class="node ai">AI视觉生成</span><span class="ar">→</span>
-            <span class="node">视频剪辑</span><span class="ar">→</span>
-            <span class="node">成片输出</span>
-          </div>
-
-          <div class="tool-line" style="margin-top: 20px;">
-            <b>工具</b>SUNO（音乐） · AI绘画工具（视觉） · 视频生成工具（动态） · 剪映（剪辑）
-          </div>
-        </div>
-
-        <div class="img-grid g3 fade-up d1">
-     <div class="img-grid g3 fade-up d1">
-  <div class="img-item wide">
-    <img src="ai.jpg" alt="AI音乐MV画面">
-    <div class="img-cap">国风AI音乐MV · 成片画面</div>
-  </div>
-          <div class="img-item">
-            <img src="ai2.jpg" alt="AI视觉生成">
-            <div class="img-cap">AI视觉生成</div>
-          </div>
-          <div class="img-item">
-            <img src="ai3.jpg" alt="Prompt迭代">
-            <div class="img-cap">Prompt 迭代记录</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="block">
-        <div class="sub fade-up">最终成果<span class="sub-en">Results</span></div>
-        <div class="stat-row fade-up d1">
-          <div class="stat">
-            <div class="n">4<small> 首</small></div>
-            <div class="l">AI音乐MV成片</div>
-          </div>
-          <div class="stat">
-            <div class="n">100<small>+</small></div>
-            <div class="l">Prompt迭代次数</div>
-          </div>
-          <div class="stat">
-            <div class="n">1<small> 套</small></div>
-            <div class="l">国风视觉模板</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== 04 Campus ========== -->
-  <section id="campus">
-    <div class="inner">
-      <div class="module-head fade-up">
-        <span class="module-num">04</span>
-        <div>
-          <div class="eyebrow">Campus</div>
-          <h2 class="module-title">校园经历</h2>
+  <!-- ==================== 05 AI CREATIVE ==================== -->
+  <section id="creative" class="alt">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <span class="sec-num">05</span>
+        <div class="hd">
+          <p class="eyebrow">AI Creative</p>
+          <h2 class="sec-title">AI 创意项目</h2>
+          <p class="sec-sum">为 4 首古风歌曲生成配套视觉素材，并输出 1 支完整 MV。</p>
         </div>
-      </div>
+      </header>
 
-      <!-- 惟悦工作室 -->
-      <div class="block fade-up">
-        <div class="work-head">
-          <span class="work-no">01</span>
-          <h4 class="work-title">惟悦工作室｜公众号运营</h4>
+      <article class="case reveal">
+        <div class="case-head">
+          <span class="case-no">PROJECT 01</span>
+          <h3 class="case-title">AI 音乐 MV 视觉创作</h3>
+          <p class="case-sum">负责 4 首古风歌曲对应视觉素材的生成与筛选，配合剪辑输出 1 支完整 MV。</p>
+          <p class="case-meta">院级 SCTP 项目 · 个人 AIGC 实践 · 获评院级优秀结项</p>
         </div>
-        <p class="p-meta">2025.03 – 2026.07 · 公众号内容运营</p>
 
-        <div class="fade-up">
-          <div class="sub sub-sm">我的工作</div>
-          <ul class="duty-list" style="margin-bottom: 24px;">
-            <li>选题策划<span>结合读者关注点规划选题</span></li>
-            <li>内容编辑<span>推文撰写与审核</span></li>
-            <li>排版发布<span>视觉排版与发布管理</span></li>
-            <li>数据复盘<span>周度数据跟踪与方向调整</span></li>
-          </ul>
-
-          <div class="campus-stats">
-            <div class="cs-big">
-              <svg class="cs-ico" viewBox="0 0 64 40" aria-hidden="true">
-                <path d="M2,20 C12,6 52,6 62,20 C52,34 12,34 2,20 Z" fill="none" stroke="var(--accent)" stroke-width="2.6"/>
-                <circle cx="32" cy="20" r="7.5" fill="none" stroke="var(--accent)" stroke-width="2.6"/>
-                <circle cx="32" cy="20" r="2.6" fill="var(--accent)"/>
-              </svg>
-              <div class="cs-big-txt">
-                <div class="cs-n">2.2<small>w+</small></div>
-                <div class="cs-l">公众号单篇最高阅读</div>
+        <div class="grid">
+          <div class="s7">
+            <div class="case-col">
+              <h4 class="sub-h">项目背景</h4>
+              <div class="sub-body">
+                <p class="body">院级 SCTP 项目，以国风音乐为主题，探索 AI 工具在视觉素材生产中的可用性，并把可用的画面组织成一支完整 MV。</p>
               </div>
             </div>
-            <div class="cs-mini">
-              <div class="cs-n2">80<small>+</small></div>
-              <div class="cs-l2">篇 · 累计发布内容</div>
+
+            <div class="case-col">
+              <h4 class="sub-h">我的行动</h4>
+              <div class="sub-body">
+                <ul class="bullets">
+                  <li>负责 4 首古风歌曲对应的视觉素材生成</li>
+                  <li>设定统一的画面风格与配色方向</li>
+                  <li>调整提示词，让画面要素可被工具稳定理解</li>
+                  <li>筛选可用素材并配合剪辑完成成片</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="case-col">
+              <h4 class="sub-h">方法流程</h4>
+              <div class="sub-body">
+                <div class="flow">
+                  <div class="flow-step"><span class="fs-no">01</span><span class="fs-t">定风格框架</span></div>
+                  <span class="flow-arrow" aria-hidden="true">→</span>
+                  <div class="flow-step"><span class="fs-no">02</span><span class="fs-t">写提示词</span></div>
+                  <span class="flow-arrow" aria-hidden="true">→</span>
+                  <div class="flow-step"><span class="fs-no">03</span><span class="fs-t">批量生成</span></div>
+                  <span class="flow-arrow" aria-hidden="true">→</span>
+                  <div class="flow-step"><span class="fs-no">04</span><span class="fs-t">人工筛选</span></div>
+                  <span class="flow-arrow" aria-hidden="true">→</span>
+                  <div class="flow-step"><span class="fs-no">05</span><span class="fs-t">剪辑成片</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="s5">
+            <h4 class="sub-h">项目结果</h4>
+            <div class="res sub-body">
+              <p class="res-n">1<span class="u"> 支</span></p>
+              <p class="res-l">完整 MV 成片</p>
+              <p class="res-d">配套生成 4 首歌曲的视觉素材，画面风格与配色保持统一。</p>
+            </div>
+
+            <div class="panel" style="margin-top: 30px;">
+              <p class="panel-k">项目信息</p>
+              <dl class="kv" style="margin-top: 12px;">
+                <dt>工具</dt><dd>即梦 · 可灵 · ChatGPT · Gemini · DeepSeek · 剪映</dd>
+                <dt>产出</dt><dd>1 支完整 MV + 4 首歌曲视觉素材</dd>
+              </dl>
             </div>
           </div>
         </div>
 
-        <div class="ev-grid three fade-up d1">
-          <div class="img-item">
-            <img src="gzh.jpg" alt="公众号内容">
+        <!-- 完整 MV -->
+        <div class="grid" style="margin-top: 48px;">
+          <div class="s8">
+            <figure class="fig">
+              <div class="media video r-169" data-src="assets/video/mv-guofeng.mp4" data-poster="assets/img/mv-guofeng-poster.jpg">
+              <div class="video-stage"><img class="video-poster" src="assets/img/mv-guofeng-poster.jpg" alt="AI 音乐 MV 封面" loading="lazy" decoding="async"></div>
+                <button class="video-play" type="button" aria-label="播放完整 MV"></button>
+                <div class="video-hint"></div>
+              </div>
+              <figcaption>国风主题 AI 音乐 MV 成片 · 点击播放</figcaption>
+            </figure>
           </div>
-          <div class="img-item">
-            <img src="gzh2.jpg" alt="选题与封面">
+          <div class="s4">
+            <div class="panel">
+              <p class="panel-k">创作逻辑</p>
+              <p class="panel-d">先定风格框架，再用提示词约束细节，最后人工筛选。</p>
+              <p class="panel-d">把「想要的感觉」拆成可被工具理解的画面要素，是这段实践里最主要的方法。</p>
+            </div>
           </div>
-          <div class="img-item">
-            <img src="gzh3.jpg" alt="公众号推文">
+        </div>
+
+        <!-- 视觉素材 -->
+        <div class="grid g-top" style="margin-top: 40px;">
+          <div class="s12">
+            <figure class="fig">
+              <div class="media r-169"><img src="assets/img/creative-01.jpg" alt="AI 生成的视觉素材 01" loading="lazy" decoding="async"></div>
+              <figcaption>AI 生成的视觉素材 01</figcaption>
+            </figure>
+          </div>
+          <div class="s6">
+            <figure class="fig">
+              <div class="media r-169"><img src="assets/img/creative-02.jpg" alt="AI 生成的视觉素材 02" loading="lazy" decoding="async"></div>
+              <figcaption>AI 生成的视觉素材 02</figcaption>
+            </figure>
+          </div>
+          <div class="s6">
+            <figure class="fig">
+              <div class="media r-169"><img src="assets/img/creative-03.jpg" alt="AI 生成的视觉素材 03" loading="lazy" decoding="async"></div>
+              <figcaption>AI 生成的视觉素材 03</figcaption>
+            </figure>
+          </div>
+          <div class="s12">
+            <p class="note" style="margin-top: 4px;">以上为 4 首古风歌曲对应的视觉素材精选。</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ==================== 06 ABOUT ==================== -->
+  <section id="about">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <span class="sec-num">06</span>
+        <div class="hd">
+          <p class="eyebrow">About</p>
+          <h2 class="sec-title">关于我</h2>
+          <p class="sec-sum">关注 AI 技术在内容、用户与产品运营场景中的应用。</p>
+        </div>
+      </header>
+
+      <div class="grid">
+        <div class="s4">
+          <figure class="fig">
+            <div class="media r-45"><img src="assets/img/avatar.jpg" alt="许佳丽" loading="lazy" decoding="async"></div>
+          </figure>
+        </div>
+        <div class="s8">
+          <p class="about-name">许佳丽</p>
+          <p class="about-role">西南交通大学 · 汉语言文学 · 2027 届</p>
+          <p class="about-lead">关注 AI 技术在内容、用户与产品运营场景中的应用。</p>
+
+          <dl class="kv" style="margin-top: 28px;">
+            <dt>教育背景</dt><dd>西南交通大学 · 汉语言文学（2023–2027）<br>英语六级 · 普通话二级甲等</dd>
+            <dt>求职方向</dt><dd>内容运营 · 用户运营 · 产品运营 · AI 应用相关方向（开放）</dd>
+            <dt>常用工具</dt><dd>ChatGPT · Gemini · DeepSeek · 即梦 · 可灵 · 剪映 · 秀米 · Canva · 稿定 · Excel</dd>
+            <dt>联系方式</dt><dd>
+              <div class="contact-list">
+                <a href="tel:15882011277">158 8201 1277</a>
+                <a href="mailto:2131483135@qq.com">2131483135@qq.com</a>
+              </div>
+            </dd>
+          </dl>
+        </div>
+      </div>
+
+      <!-- 能力 -->
+      <div class="grid" style="margin-top: 60px;">
+        <div class="s6">
+          <div class="spec">
+            <div class="spec-item">
+              <p class="spec-t">内容运营</p>
+              <p class="spec-d">能把一个选题做成可发布的内容：编辑、校对、排版、发布流程完整跑通，能按节奏持续产出。</p>
+            </div>
+            <div class="spec-item">
+              <p class="spec-t">用户理解</p>
+              <p class="spec-d">习惯从评论、私信与应用反馈里找问题，把用户原话整理成可用的需求描述。</p>
+            </div>
+          </div>
+        </div>
+        <div class="s6">
+          <div class="spec">
+            <div class="spec-item">
+              <p class="spec-t">数据整理</p>
+              <p class="spec-d">能处理来源杂乱的素材与反馈，做清洗、归类与结构化输出，交付可直接使用的表格。</p>
+            </div>
+            <div class="spec-item">
+              <p class="spec-t">AI 应用</p>
+              <p class="spec-d">会判断哪些环节适合交给 AI，能把工作要求写成提示词模板，并保留人工校验环节。</p>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- 教师教学发展中心 -->
-      <div class="block fade-up">
-        <div class="work-head">
-          <span class="work-no">02</span>
-          <h4 class="work-title">教师教学发展中心｜学生助理</h4>
-        </div>
-        <p class="p-meta">2025.03 – 至今 · 学生助理</p>
-
-        <div class="fade-up">
-          <div class="sub sub-sm">我的工作</div>
-          <ul class="duty-list" style="margin-bottom: 22px;">
-            <li>活动组织<span>参与教师教学相关活动的前期准备与现场支持</span></li>
-            <li>内容发布<span>根据活动信息整理发布内容，完成标题、正文及基础排版</span></li>
-            <li>素材整理<span>整理活动照片、文字信息及相关资料，为内容发布提供素材</span></li>
-            <li>活动内容记录<span>参与整理教学竞赛、教师活动、研修班等内容并协助对外发布</span></li>
-          </ul>
-        </div>
-
-        <div class="ev-grid three fade-up d1">
-          <div class="img-item">
-            <img src="huodong.jpg" alt="活动组织">
-          </div>
-          <div class="img-item">
-            <img src="hd2.jpg" alt="内容发布">
-          </div>
-          <div class="img-item">
-            <img src="hd3.jpg" alt="素材整理">
+      <!-- 校园实践（简短补充） -->
+      <div class="grid g-top" style="margin-top: 64px;">
+        <div class="s12">
+          <h4 class="sub-h">校园实践</h4>
+          <div class="sub-body" style="max-width: 860px;">
+            <p class="body">在校期间参与校园媒体运营与活动协作，积累内容生产、项目执行与团队协作经验：负责惟悦工作室公众号的推文编辑与发布，参与教师教学发展中心的活动组织支持与素材整理，累计参与活动 30+ 场次。</p>
           </div>
         </div>
-
-        <div class="res-strip fade-up" style="margin-top: 22px;">
-          <div class="rs-n" style="display:flex; align-items:center; gap:10px;">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" aria-hidden="true">
-              <rect x="3" y="4" width="18" height="17" rx="2"/>
-              <line x1="3" y1="9" x2="21" y2="9"/>
-              <line x1="8" y1="2" x2="8" y2="6"/>
-              <line x1="16" y1="2" x2="16" y2="6"/>
-            </svg>
-            30<small>+</small>
-          </div>
-          <div class="rs-l">参与活动组织场次（2025.03 – 至今）</div>
+        <div class="s4">
+          <figure class="fig">
+            <div class="media r-43"><img src="assets/img/event-01.jpg" alt="活动现场照片" loading="lazy" decoding="async"></div>
+            <figcaption>活动现场照片 · 参与组织与素材整理</figcaption>
+          </figure>
+        </div>
+        <div class="s4">
+          <figure class="fig">
+            <div class="media r-43"><img src="assets/img/event-02.jpg" alt="活动现场照片" loading="lazy" decoding="async"></div>
+            <figcaption>活动现场照片 · 参与组织与素材整理</figcaption>
+          </figure>
+        </div>
+        <div class="s4">
+          <figure class="fig">
+            <div class="media r-43"><img src="assets/img/event-03.jpg" alt="活动现场照片" loading="lazy" decoding="async"></div>
+            <figcaption>活动现场照片 · 参与组织与素材整理</figcaption>
+          </figure>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== 05 Contact ========== -->
-  <section id="contact">
-    <div class="contact-inner fade-up">
-      <div class="module-head" style="justify-content: center; text-align: left;">
-        <span class="module-num">05</span>
-        <div>
-          <div class="eyebrow">Contact</div>
-          <h2 class="contact-title" style="margin-bottom: 0;">联系</h2>
-        </div>
-      </div>
-
-      <div class="contact-info">
-        <span>📞 15882011277</span>
-        <span>✉️ 2131483135@qq.com</span>
-      </div>
-
-      <div class="contact-facts">
-        <div>
-          <div class="f-k">工具</div>
-          <div class="f-v">DeepSeek · Gemini · SUNO · 即梦AI · 可灵AI<br>剪映 · 秀米 · Canva · 稿定</div>
-        </div>
-        <div>
-          <div class="f-k">教育背景</div>
-          <div class="f-v">西南交通大学 · 汉语言文学<br>英语六级 · 普通话二甲</div>
-        </div>
-      </div>
-
-      <div class="slogan">
-        用内容理解用户，<br>用<span>AI</span>放大效率。
-      </div>
-
-      <div class="copyright">© 2026 许佳丽 · AI Content Growth Portfolio</div>
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <span>© 2026 许佳丽 · 能力与实践型个人作品集</span>
+      <span>内容 · 用户 · AI应用</span>
     </div>
-  </section>
+  </footer>
 
-  <script>
-    // Nav scroll shadow
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 20);
-    });
-
-    // Smooth scroll
-    document.querySelectorAll('nav a[href^="#"]').forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          const top = target.getBoundingClientRect().top + window.pageYOffset - 62;
-          window.scrollTo({ top: top, behavior: 'smooth' });
-        }
-      });
-    });
-
-    // Fade-up
-    const fadeObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          fadeObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
-
-    // Nav active
-    const navLinks = document.querySelectorAll('.nav-link');
-    const navObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navLinks.forEach(link => {
-            link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
-          });
-        }
-      });
-    }, { rootMargin: '-35% 0px -55% 0px' });
-
-    document.querySelectorAll('section').forEach(s => navObserver.observe(s));
-
-    // 柱状图动画
-    const chartObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.querySelectorAll('.bar').forEach(bar => {
-            const h = bar.style.height;
-            bar.style.height = '0';
-            setTimeout(() => { bar.style.height = h; }, 120);
-          });
-          chartObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-
-    document.querySelectorAll('.chart').forEach(el => chartObserver.observe(el));
-
-    // 首页迷你柱动画
-    const miniObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.querySelectorAll('.vb i').forEach(bar => {
-            const h = bar.getAttribute('data-h');
-            bar.style.height = '0%';
-            setTimeout(() => { bar.style.height = h + '%'; }, 150);
-          });
-          miniObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-
-    document.querySelectorAll('.mv-cols').forEach(el => miniObserver.observe(el));
-  </script>
-
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
